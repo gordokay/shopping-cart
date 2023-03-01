@@ -23,12 +23,61 @@ function App() {
     })
     setItemInfo(shopItems);
   }, [])
-  
+
+  const getItemId = elementId => elementId.match(/^[^-]*/)[0];
+
+  const handleQuantityDecrease = e => {
+    const id = getItemId(e.target.id);
+    setItemInfo(lastItemInfo => {
+      if(lastItemInfo[id].quantity > 0) {
+        const updatedItemInfo = {
+          ...lastItemInfo[id],
+          quantity: lastItemInfo[id].quantity - 1
+        }
+        return {...lastItemInfo, [id]: updatedItemInfo}
+      } else {
+        return lastItemInfo;
+      }
+    })
+  }
+
+  const handleQuantityIncrease = e => {
+    const id = getItemId(e.target.id);
+    setItemInfo(lastItemInfo => {
+      const updatedItemInfo = {
+        ...lastItemInfo[id],
+        quantity: lastItemInfo[id].quantity + 1
+      }
+      return {...lastItemInfo, [id]: updatedItemInfo}
+    })
+  }
+
+  const handleQuantityChange = e => {
+    const id = getItemId(e.target.id);
+    const updatedItemInfo = {
+      ...itemInfo[id],
+      quantity: +e.target.value > 0 ? +e.target.value : 0
+    }
+    setItemInfo({...itemInfo, [id]: updatedItemInfo});
+  }
+
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/" element={<Shop />} />
+        <Route 
+          path="/" 
+          element={
+            <Shop 
+              items={items} 
+              itemInfo={itemInfo}
+              onQuantityDecrease={handleQuantityDecrease}
+              onQuantityIncrease={handleQuantityIncrease}
+              onQuantityChange={handleQuantityChange}
+              onAddToCart={handleAddToCart}
+            />
+          } 
+        />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
