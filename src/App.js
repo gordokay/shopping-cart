@@ -7,7 +7,7 @@ import Cart from "./components/Cart";
 import items from './items';
 
 function App() {
-  const [itemInfo, setItemInfo] = useState({});
+  const [itemInfo, setItemInfo] = useState(null);
   const [cartInfo, setCartInfo] = useState({
     cartItems: [],
     total: 0
@@ -18,6 +18,7 @@ function App() {
     items.forEach(item => {
       shopItems[item.id] = {
         quantity: 0,
+        isInCart: false,
         price: item.price
       }
     })
@@ -73,7 +74,12 @@ function App() {
         cartItems: lastCartInfo.cartItems.concat(newCartItem),
         total: lastCartInfo.total + (newCartItem.quantity * newCartItem.price)
       }
-    })
+    });
+    const updatedItemInfo = {
+      ...itemInfo[id],
+      isInCart: true
+    }
+    setItemInfo({...itemInfo, [id]: updatedItemInfo});
   }
 
   return (
