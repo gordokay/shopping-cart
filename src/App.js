@@ -61,6 +61,21 @@ function App() {
     setItemInfo({...itemInfo, [id]: updatedItemInfo});
   }
 
+  const handleAddToCart = e => {
+    const id = getItemId(e.target.id);
+    const newCartItem = {
+      id,
+      quantity: itemInfo[id].quantity,
+      price: itemInfo[id].price
+    };
+    setCartInfo(lastCartInfo => {
+      return {
+        cartItems: lastCartInfo.cartItems.concat(newCartItem),
+        total: lastCartInfo.total + (newCartItem.quantity * newCartItem.price)
+      }
+    })
+  }
+
   return (
     <BrowserRouter>
       <Navigation />
