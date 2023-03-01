@@ -8,7 +8,7 @@ const Navigation = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/cart"><span class="cart-notification"/>Cart</NavLink>
+          <NavLink to="/cart"><span className="cart-notification"/>Cart</NavLink>
         </li>
       </ul>
     </nav>
