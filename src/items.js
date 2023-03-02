@@ -23,6 +23,31 @@ const items = [
     id: '#D3FAD6',
     name: 'Tea Green',
     price: 17.60
+  },
+  {
+    id: '#D95D39',
+    name: 'Cinnabar',
+    price: 12.50
+  },
+  {
+    id: '#252323',
+    name: 'Raisin Black',
+    price: 14.25
+  },
+  {
+    id: '#F5F1ED',
+    name: 'Isabelline',
+    price: 5.00
+  },
+  {
+    id: '#C9D7F8',
+    name: 'Periwinkle',
+    price: 17.50
+  },
+  {
+    id: '#80CFA9',
+    name: 'Celadon',
+    price: 66.50
   }
 ]
 
