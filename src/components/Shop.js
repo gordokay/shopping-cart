@@ -1,16 +1,16 @@
 import ShopItem from "./ShopItem";
 
-const Shop = ({items, itemInfo, onQuantityDecrease, onQuantityIncrease, onQuantityChange, onAddToCart}) => {
+const Shop = ({itemInfo, onQuantityDecrease, onQuantityIncrease, onQuantityChange, onAddToCart}) => {
   if(!itemInfo) return null;
   return (
-    items.map(item => (
+    Object.values(itemInfo).map(item => (
       <ShopItem
-        key={item.id}
-        itemId={item.id}
+        key={item.itemId}
+        itemId={item.itemId}
         name={item.name}
         price={item.price}
-        quantity={itemInfo[item.id].quantity}
-        isInCart={itemInfo[item.id].isInCart}
+        quantity={item.quantity}
+        isInCart={item.isInCart}
         onQuantityDecrease={onQuantityDecrease}
         onQuantityIncrease={onQuantityIncrease}
         onQuantityChange={onQuantityChange}

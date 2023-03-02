@@ -17,8 +17,10 @@ function App() {
     const shopItems = {};
     items.forEach(item => {
       shopItems[item.id] = {
+        itemId: item.id,
         quantity: 0,
         isInCart: false,
+        name: item.name,
         price: item.price
       }
     })
@@ -66,6 +68,7 @@ function App() {
     const id = getItemId(e.target.id);
     const newCartItem = {
       id,
+      name: itemInfo[id].name,
       quantity: itemInfo[id].quantity,
       price: itemInfo[id].price
     };
@@ -90,7 +93,6 @@ function App() {
           path="/" 
           element={
             <Shop 
-              items={items} 
               itemInfo={itemInfo}
               onQuantityDecrease={handleQuantityDecrease}
               onQuantityIncrease={handleQuantityIncrease}
@@ -99,7 +101,12 @@ function App() {
             />
           } 
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route 
+          path="/cart" 
+          element={
+            <Cart items={cartInfo.cartItems} total={cartInfo.total}/>
+          } 
+        />
       </Routes>
     </BrowserRouter>
   );
