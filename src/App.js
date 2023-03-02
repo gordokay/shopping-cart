@@ -67,7 +67,7 @@ function App() {
   const handleAddToCart = e => {
     const id = getItemId(e.target.id);
     const newCartItem = {
-      id,
+      itemId: id,
       name: itemInfo[id].name,
       quantity: itemInfo[id].quantity,
       price: itemInfo[id].price
@@ -84,6 +84,22 @@ function App() {
     }
     setItemInfo({...itemInfo, [id]: updatedItemInfo});
   }
+
+  const handleRemoveFromCart = e => {
+    const id = getItemId(e.target.id);
+    setCartInfo(lastCartInfo => {
+      const cartItemToRemove = lastCartInfo.cartItems.find(c => c.itemId === id);
+      const updatedCartItems = lastCartInfo.cartItems.filter(c => c.itemId !== id);
+      const newTotal = lastCartInfo.total - (cartItemToRemove.quantity * cartItemToRemove.price);
+      return {cartItems: updatedCartItems, total: newTotal};
+    })
+    const updatedItemInfo = {
+      ...itemInfo[id],
+      quantity: 0,
+      isInCart: false
+    }
+    setItemInfo({...itemInfo, [id]: updatedItemInfo});
+  };
 
   return (
     <BrowserRouter>
@@ -104,7 +120,11 @@ function App() {
         <Route 
           path="/cart" 
           element={
-            <Cart items={cartInfo.cartItems} total={cartInfo.total}/>
+            <Cart 
+              items={cartInfo.cartItems} 
+              total={cartInfo.total}
+              onRemoveFromCart={handleRemoveFromCart}
+            />
           } 
         />
       </Routes>
