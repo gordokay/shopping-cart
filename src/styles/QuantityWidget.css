@@ -1,0 +1,42 @@
+.quantity-widget fieldset {
+  border: none;
+}
+
+.quantity-widget legend {
+  margin-bottom: 0.25rem;
+}
+
+.quantity-widget-controls {
+  display: flex;
+}
+
+.quantity-widget input {
+  width: 4rem;
+  text-align: center;
+  border: 1px solid var(--dark);
+  border-left: none;
+  border-right: none;
+}
+
+.quantity-widget input:disabled {
+  background-color: var(--primary);
+  color: var(--dark);
+}
+
+.quantity-widget button {
+  box-shadow: none;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+}
+
+.quantity-widget button:active {
+  transform: none;
+}
+
+.quantity-decrease {
+  border-radius: 50% 0 0 50%;
+}
+
+.quantity-increase {
+  border-radius: 0 50% 50% 0;
+}

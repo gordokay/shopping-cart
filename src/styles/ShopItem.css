@@ -1,14 +1,20 @@
 .shop-item {
-  width: fit-content;
+  width: 275px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border: 1px solid var(--dark)
+  border: 1px solid var(--dark);
+  padding-block: 1rem;
+}
+
+.shop-item > * {
+  margin-inline: 1rem;
 }
 
 .shop-item-image {
   width: 100%;
   aspect-ratio: 1.5;
+  margin-inline: 0;
 }
 
 .shop-item-price {

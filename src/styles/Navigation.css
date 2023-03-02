@@ -1,32 +1,41 @@
+nav {
+  margin-block: 2rem;
+}
+
 nav ul {
   display: flex;
-  gap: 1rem;
+  gap: 4rem;
 }
 
 nav ul li {
   list-style: none;
 }
 
-a {
+nav a {
+  position: relative;
   font-size: 2rem;
   text-decoration: none;
 }
 
-a.active {
+nav a.active {
   font-weight: 700;
 }
 
-a:visited {
+nav a:visited {
   color: var(--dark);
 }
 
 nav span {
-  text-align: center;
-  display: inline-block;
+  position: absolute;
+  left: -2rem;
+  top: calc(50% - 0.75rem);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-size: 0.875rem;
   font-weight: 400;
-  background-color: pink;
-  width: 2rem;
-  height: 2rem;
+  background-color: var(--primary);
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
 }

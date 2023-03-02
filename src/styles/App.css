@@ -2,6 +2,7 @@
 
 :root {
   --dark: #171216;
+  --primary: #FFDADA;
 }
 
 *,
@@ -26,6 +27,29 @@ button {
   letter-spacing: 0.1rem;
   background-color: transparent;
   border: 1px solid var(--dark);
+  box-shadow: -4px 4px var(--dark);
+  width: fit-content;
+  padding: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+}
+
+button:active {
+  transform: translate(-4px, 4px);
+  box-shadow: none;
+}
+
+button:disabled {
+  cursor: default;
+  color: var(--dark);
+  background-color: var(--primary);
+}
+
+button:disabled:active {
+  transform: none;
   box-shadow: -4px 4px var(--dark);
 }
 
