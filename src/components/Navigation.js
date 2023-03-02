@@ -1,6 +1,8 @@
+import '../styles/Navigation.css';
+
 import { NavLink } from "react-router-dom";
 
-const Navigation = () => {
+const Navigation = ({quantity}) => {
   return (
     <nav>
       <ul>
@@ -8,7 +10,7 @@ const Navigation = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/cart"><span className="cart-notification"/>Cart</NavLink>
+          <NavLink to="/cart"><span className="cart-notification">{quantity}</span>Cart</NavLink>
         </li>
       </ul>
     </nav>

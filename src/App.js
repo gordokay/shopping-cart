@@ -1,3 +1,5 @@
+import './styles/App.css';
+
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
@@ -10,7 +12,8 @@ function App() {
   const [itemInfo, setItemInfo] = useState(null);
   const [cartInfo, setCartInfo] = useState({
     cartItems: [],
-    total: 0
+    total: 0,
+    quantity: 0
   });
 
   useEffect(() => {
@@ -75,7 +78,8 @@ function App() {
     setCartInfo(lastCartInfo => {
       return {
         cartItems: lastCartInfo.cartItems.concat(newCartItem),
-        total: lastCartInfo.total + (newCartItem.quantity * newCartItem.price)
+        total: lastCartInfo.total + (newCartItem.quantity * newCartItem.price),
+        quantity: lastCartInfo.quantity + newCartItem.quantity
       }
     });
     const updatedItemInfo = {
@@ -91,7 +95,8 @@ function App() {
       const cartItemToRemove = lastCartInfo.cartItems.find(c => c.itemId === id);
       const updatedCartItems = lastCartInfo.cartItems.filter(c => c.itemId !== id);
       const newTotal = lastCartInfo.total - (cartItemToRemove.quantity * cartItemToRemove.price);
-      return {cartItems: updatedCartItems, total: newTotal};
+      const newQuantity = lastCartInfo.quantity - cartItemToRemove.quantity;
+      return {cartItems: updatedCartItems, total: newTotal, quantity: newQuantity};
     })
     const updatedItemInfo = {
       ...itemInfo[id],
@@ -103,7 +108,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navigation />
+      <Navigation quantity={cartInfo.quantity}/>
       <Routes>
         <Route 
           path="/" 
