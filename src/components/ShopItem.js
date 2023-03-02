@@ -10,7 +10,7 @@ const ShopItem = ({itemId, name, price, quantity, isInCart, onQuantityDecrease, 
       <p>{name}</p>
       <div className="shop-item-image" style={style}/>
       <p className="shop-item-price">{price}</p>
-      <QuantityWidget isInCart={isInCart} itemId={itemId} value={quantity} onQuantiyDecrease={onQuantityDecrease} onQuantityIncrease={onQuantityIncrease} onQuantityChange={onQuantityChange}/>
+      <QuantityWidget isInCart={isInCart} itemId={itemId} value={quantity} onQuantityDecrease={onQuantityDecrease} onQuantityIncrease={onQuantityIncrease} onQuantityChange={onQuantityChange}/>
       <button id={`${itemId}-add`} onClick={onAddToCart} disabled={isInCart}>{isInCart ? "Added to cart" : "Add to cart"}</button>
     </div>
   )
