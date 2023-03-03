@@ -1,0 +1,27 @@
+.cart-item {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(3, auto) 1fr auto;
+  gap: 1rem;
+}
+
+.cart-item-image {
+  width: 2rem;
+  height: 2rem;
+}
+
+.cart-item-price {
+  justify-self: end;
+  margin-right: 4rem;
+}
+
+.cart-item button {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.cart-item button:hover {
+  background-color: transparent;
+  border-bottom: 1px solid var(--dark);
+}
