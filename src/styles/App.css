@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap");
 
 :root {
   --dark: #171216;
-  --primary: #FFDADA;
+  --primary: #ffdada;
 }
 
 *,
@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--dark);
   width: 75%;
   margin: 0 auto;
